@@ -1,0 +1,22 @@
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+#footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+footprint: [[0.06,0.1], [-0.14,0.10], [-0.14,-0.1], [0.06,-0.1]]
+robot_radius: 0
+footprint_padding: 0.03
+
+inflation_radius: 1
+cost_scaling_factor: 3.0
+
+#map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+#map_type: voxel
+#z_voxels: 10
+#unknown_threshold: 8
+
+#transform_tolerance: 0.3
+#max_obstacle_height: 2.0
+#lethal_cost_threshold: 100
