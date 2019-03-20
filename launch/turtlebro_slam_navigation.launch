@@ -1,0 +1,19 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="$(env TURTLEBRO_MODEL)" doc="model type [bro, brover]"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- gmapping server -->
+  <include file="$(find turtlebro_navigation)/launch/turtlebro_gmapping.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find turtlebro_navigation)/launch/move_base.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find turtlebro_navigation)/rviz/turtlebro_navigation.rviz"/>
+  </group>
+</launch>
