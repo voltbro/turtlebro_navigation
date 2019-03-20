@@ -1,6 +1,6 @@
 <launch>
   <!-- Arguments -->
-  <arg name="model" default="$(env TURTLEBRO_MODEL)" doc="model type [bro, brover]"/>
+  <arg name="model" default="$(env ROVER_MODEL)" doc="model type [turtlebro, brover]"/>
   <arg name="open_rviz" default="true"/>
 
   <!-- gmapping server -->
