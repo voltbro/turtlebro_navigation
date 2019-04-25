@@ -17,6 +17,6 @@ scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true
 #z_voxels: 10
 #unknown_threshold: 8
 
-#transform_tolerance: 0.3
+transform_tolerance: 0.3
 #max_obstacle_height: 2.0
 #lethal_cost_threshold: 100

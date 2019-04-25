@@ -2,6 +2,11 @@
   <!-- Arguments -->
   <arg name="model" default="$(env ROVER_MODEL)" doc="model type [turtlebro, brover]"/>
   <arg name="open_rviz" default="true"/>
+  <arg name="use_sim_time" default="false"/>
+
+  <group if="$(arg use_sim_time)">
+    <param name="/use_sim_time" value="true" />
+  </group>
 
   <!-- gmapping server -->
   <include file="$(find turtlebro_navigation)/launch/turtlebro_gmapping.launch"/>
