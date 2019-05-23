@@ -35,5 +35,5 @@ roslaunch turtlebro_navigation turtlebro_gmapping.launch
 
 Save map file
 ```
-rosrun map_server map_server mymap.yaml
+rosrun map_server map_server -f mymap
 ```
