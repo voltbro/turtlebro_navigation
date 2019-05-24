@@ -9,7 +9,7 @@
   </group>
 
   <!-- gmapping server -->
-  <include file="$(find turtlebro_navigation)/launch/turtlebro_gmapping.launch"/>
+  <include file="$(find turtlebro_navigation)/launch/gmapping.launch"/>
 
   <!-- move_base -->
   <include file="$(find turtlebro_navigation)/launch/move_base.launch">
