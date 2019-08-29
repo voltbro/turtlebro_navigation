@@ -1,5 +1,8 @@
 # Turtlebro navigation stack
 
+## Dependencies
+sudo apt-get install ros-melodic-slam-gmapping && sudo apt-get install ros-melodic-turtlebot3-navigation && sudo apt-get install ros-melodic-navigation
+
 ## Setup
 
 ```
