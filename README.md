@@ -12,6 +12,7 @@ export ROVER_MODEL=turtlebro
 -or-
 export ROVER_MODEL=brover
 ```
+It\`s tune at turtlebro RaspberryPi firmware.
 
 
 
@@ -22,6 +23,12 @@ catkin_make --pkg turtlebro_navigation
 ```
 
 ## Launch
+
+#### Launch on RaspberryPi
+You must turn off rviz
+```
+roslaunch turtlebro_navigation turtlebro_slam_navigation.launch open_rviz:=0
+```
 
 #### Slam and move_base 
 ```
