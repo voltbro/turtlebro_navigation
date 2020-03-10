@@ -19,7 +19,7 @@ It\`s tune at turtlebro RaspberryPi firmware.
 ## Build
 
 ```
-catkin_make --pkg turtlebro_navigation
+catkin_make --pkg=turtlebro_navigation
 ```
 
 ## Launch
