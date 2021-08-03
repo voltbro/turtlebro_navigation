@@ -1,0 +1,14 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="$(env ROVER_MODEL)" doc="model type [turtlebro, brover]"/>
+  <arg name="map_file" default="$(find turtlebro_navigation)/maps/map.yaml"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)">
+    <param name="delta" value="0.05"/>
+  </node>
+
+  <!-- AMCL -->
+  <include file="$(find turtlebro_navigation)/launch/amcl.launch"/>
+</launch>
