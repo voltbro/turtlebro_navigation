@@ -1,7 +1,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="model" default="$(env ROVER_MODEL)" doc="model type [turtlebro, brover]"/>
-  <arg name="open_rviz" default="true"/>
+  <arg name="open_rviz" default="false"/>
   <arg name="use_sim_time" default="false"/>
 
   <group if="$(arg use_sim_time)">
