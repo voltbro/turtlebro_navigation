@@ -6,8 +6,8 @@ TrajectoryPlannerROS:
   max_vel_x: 0.16
   min_vel_x: 0.03
 
-  max_vel_theta:  1.1
-  min_vel_theta: -1.1
+  max_vel_theta:  0.8
+  min_vel_theta: -0.8
   min_in_place_vel_theta: 0.25
 
   acc_lim_x: 1.0
@@ -24,5 +24,5 @@ TrajectoryPlannerROS:
 # Forward Simulation Parameters
   sim_time: 3
   vx_samples: 18
-  vtheta_samples: 20
+  vtheta_samples: 40
   sim_granularity: 0.05
