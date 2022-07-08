@@ -34,7 +34,15 @@ Run in autonomous navigation mode and map building:
 roslaunch turtlebro_navigation turtlebro_slam_navigation.launch open_rviz:=0
 ```
 It will launch move_base and slam_gmapping nodes both. in that mode you can set goals to robot through rviz on your PC.  
-Just set correct ROS_MASTER_URI and ROS_HOSTNAME in console on your pc and run rviz. Then Add->By Topic->/map and you will be able to see robot`s map. You can add new goal to robot using 2D Nav Goal button on the top of rviz window.  
+Just set correct ROS_MASTER_URI and ROS_HOSTNAME in console on your pc and run rviz. 
+```
+export ROS_MASTER_URI=http://<IP-address_robot>:11311/
+export ROS_HOSTNAME=IP-address_PC
+
+rviz
+```
+
+Then Add->By Topic->/map and you will be able to see robot`s map. You can add new goal to robot using 2D Nav Goal button on the top of rviz window.  
 
 
 #### Navigation on existing map 
