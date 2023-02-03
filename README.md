@@ -1,39 +1,51 @@
-# Turtlebro navigation stack
+# Пакет навигации turtlebro_navigation для роботов компании "Братья Вольт"
 
-This package provides a wrapper for the standard ROS navigation stack, and stores parameters specifically tailored for Voltbro robots.   
-The package provides the ability to construct a terrain map from lidar data using the standard ROS gmapping package.  
-The package also provides the possibility of autonomous movement according to lidar data using the ROS movebase package.
-It is preinstalled and is already on the Linux image supplied with the robot.   
+Этот пакет предоставляет оболочку для стандартного навигационного стека ROS и хранит параметры, специально разработанные для роботов компании "Братья Вольт".   
+Пакет предоставляет возможность построения карты местности на основе данных лидара с использованием стандартного пакета ROS gmapping.  
+Пакет также предоставляет возможность автономного перемещения по данным лидара с использованием пакета ROS move_base.
+Он предустановлен и уже находится в образе операционной системы, поставляемом вместе с роботами.
 
-For more information see:  
-- ROS navigation: http://wiki.ros.org/navigation   
-- Gmapping: http://wiki.ros.org/gmapping  
-- Voltbro course about navigation: http://learn.voltbro.ru/  
+Для получения дополнительной информации смотрите:
+- Стек навигации ROS: http://wiki.ros.org/navigation   
+- Стек картографирования Gmapping: http://wiki.ros.org/gmapping  
+- Курс по навигации от "Братья Вольт": http://learn.voltbro.ru/data/ros-navigation/ 
  
-## Setup
+## Установка пакета
+
+По умолчанию пакет навигации уже настроен на работу с используемым типо робота TurtleBro/BRover V.4. В случае, если вам необходимо изменить тип используемого робота, воспользуйтесь следующими командами:
 
 ```
 export ROVER_MODEL=turtlebro
--or-
+
+-или-
+
 export ROVER_MODEL=brover
 ```
-It\`s tune at turtlebro RaspberryPi firmware.
+
+## Запуск навигации
 
 
-## Launch
+##### Важная заметка:
 
-##### Note:
-You have to clear all previous odometry data from robot to use map building and navigation:
+Перед запуском рекомендуется сбрасывать показания одометрии для использования навигации и построения карты:
 ```
 rosservice call /reset
 ```
 
-#### Launch navigation and mapping
-Run in autonomous navigation mode and map building:  
+__Запуск навигации в режиме SLAM__
+
+SLAM (англ. simultaneous localization and mapping — одновременная локализация и построение карты) — метод, используемый в мобильных автономных средствах для построения карты в неизвестном пространстве или для обновления карты в заранее известном пространстве с одновременным контролем текущего местоположения и пройденного пути.
+
+Для запуска навигации в режиме SLAM необходимо выполнить на роботе следующую команду:  
+
 ```
 roslaunch turtlebro_navigation turtlebro_slam_navigation.launch open_rviz:=0
 ```
-It will launch move_base and slam_gmapping nodes both. in that mode you can set goals to robot through rviz on your PC.  
+
+Лаунч-файл запустит обе ноды move_base и slam_gmapping. В этом режиме вы можете устанавливать цели для робота через RViz на компьютере.
+
+__Установка __
+
 Just set correct ROS_MASTER_URI and ROS_HOSTNAME in console on your pc and run rviz. 
 ```
 export ROS_MASTER_URI=http://<IP-address_robot>:11311/
