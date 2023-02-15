@@ -42,35 +42,65 @@ SLAM (англ. simultaneous localization and mapping — одновременн
 roslaunch turtlebro_navigation turtlebro_slam_navigation.launch open_rviz:=0
 ```
 
-Лаунч-файл запустит обе ноды move_base и slam_gmapping. В этом режиме вы можете устанавливать цели для робота через RViz на компьютере.
+Лаунч-файл запустит обе ноды **move_base** и **slam_gmapping**. В этом режиме вы можете устанавливать цели для робота через RViz на компьютере.
 
-__Установка __
+__Сетевые настройки для запуска RViz__
 
-Just set correct ROS_MASTER_URI and ROS_HOSTNAME in console on your pc and run rviz. 
+Видео-урок по сетевым настройкам: https://youtu.be/bmH17_yXIvk
+
+Для запуска RViz необходимо установить в терминале вашего ПК коректные сетевые переменные ROS_MASTER_URI и ROS_HOSTNAME и запустить RViz: 
 ```
 export ROS_MASTER_URI=http://<IP-address_robot>:11311/
 export ROS_HOSTNAME=IP-address_PC
+```
 
+```
 rviz
 ```
 
-Then Add->By Topic->/map and you will be able to see robot`s map. You can add new goal to robot using 2D Nav Goal button on the top of rviz window.  
+Далее необходимо нажать Add->By Topic->/map и вы сможете увидеть карту, которую строит робот. Вы можете добавить новую цель для робота, используя кнопку **2D Nav Goal** в верхней части окна RViz.
 
+## Запуск только построения карты
 
-#### Navigation on existing map 
-If you want to run navigation on pre-builded map:  
-```
-roslaunch turtlebro_navigation turtlebro_map_navigation.launch
-```
-
-#### Build map only
-If you want to build map, but you want to move turtlebot without move_base package, for example with joystick:  
+Если вы хотите построить карту, но хотите управлять роботом, например, с помощью джойстика или веб-интерфейса без использования пакета **move_base**, то используйте лайнч-файл ***turtlebro_gmapping.launch***:
 ```
 roslaunch turtlebro_navigation turtlebro_gmapping.launch
 ```
 
-#### Save map file
-if you want to save map after some time of navigation:    
+## Сохранение файлов с картой
+
+Для сохранения файлов построенной карты (изображение в формате .png и конфигурационный файл в формате .yaml) воспользуйтесь командой: 
+ 
 ```
+rosrun map_server map_saver -f имя_карты
+
 rosrun map_server map_saver -f mymap
+```
+
+## Навигация по существующей карте
+
+Для начала файлы с информацией о карте, необходимо скопировать в директорию робота:
+
+```
+/home/pi/catkin_ws/src/turtlebro_navigation/maps
+```
+
+Сделать это можно с помощью команды *cp*:
+
+```
+cp map.pgm catkin_ws/src/turtlebro_navigation/maps
+cp map.yaml catkin_ws/src/turtlebro_navigation/maps
+```
+
+После этого необходимо пересобрать пакет навигации:
+
+```
+cd ~/catkin_ws
+catkin_make --pkg turtlebro_navigation
+```
+
+Запуск навигации на построенной карте осуществляется с помощью лаунч-файла ***turtlebro_map_navigation.launch***:
+ 
+```
+roslaunch turtlebro_navigation turtlebro_map_navigation.launch
 ```
